@@ -35,8 +35,10 @@ export function View(props: Iprops) {
         </div>
         <div>
           <input
-            name="checkbox"
+            name="isagreed"
             type="checkbox"
+            checked={props.form_data.isagreed}
+            onChange={props.handleChange}
           />
           {
             props.form_errors.isagreed
@@ -46,6 +48,7 @@ export function View(props: Iprops) {
       </form>
       <h2>email:{props.email}</h2>
       <h2>password:{props.password}</h2>
+      <h2>isagreed:{String(props.form_data.isagreed)}</h2>
     </div>
   )
 }

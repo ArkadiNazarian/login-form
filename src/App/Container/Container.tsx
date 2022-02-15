@@ -12,18 +12,19 @@ export const useContainer = () => {
     const initial_values = {
         email: "",
         password: "",
+        isagreed:false
     } as IFormValues;
 
     const validation_schema = yup.object().shape({
         email: yup.string().required(),
         password: yup.string().min(4).required(),
-        isagreed: yup.boolean().oneOf([true])
+        isagreed: yup.boolean().isTrue()
     });
 
     const action_submit = (values: IFormValues) => {
         setEmail(values.email);
         setPassword(values.password);
-        validation_schema.isValid(values).then((IsValid) => console.log(IsValid));
+        validation_schema.isValid(values).then((isValid) => console.log({isValid,values}));
     };
 
     const formik = useFormik({
